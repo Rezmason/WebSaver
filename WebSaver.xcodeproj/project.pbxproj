@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C2BFD8922449D5200B82AC7 /* ConfigSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C2BFD8822449D5200B82AC7 /* ConfigSheet.xib */; };
 		3C85CA2922435C25005C33CC /* WebSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C85CA2822435C25005C33CC /* WebSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C2BFD8822449D5200B82AC7 /* ConfigSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigSheet.xib; sourceTree = "<group>"; };
 		3C85CA1B22435C17005C33CC /* WebSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C85CA2222435C17005C33CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C85CA2822435C25005C33CC /* WebSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSaver.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			children = (
 				3C85CA2222435C17005C33CC /* Info.plist */,
 				3C85CA2822435C25005C33CC /* WebSaver.swift */,
+				3C2BFD8822449D5200B82AC7 /* ConfigSheet.xib */,
 			);
 			path = WebSaver;
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2BFD8922449D5200B82AC7 /* ConfigSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
