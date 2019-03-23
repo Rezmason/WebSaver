@@ -13,7 +13,7 @@ let ConfigChanged = Notification.Name.init("ConfigChanged")
 
 class WebSaverView:ScreenSaverView, WKNavigationDelegate {
     
-    var wkWebView:WKWebView!
+    var wkWebView:WKWebView?
     var configChangedObserver:NSObjectProtocol?
     
     override init?(frame: NSRect, isPreview: Bool) {
@@ -55,27 +55,35 @@ class WebSaverView:ScreenSaverView, WKNavigationDelegate {
     
     override func startAnimation() {
         super.startAnimation()
-        wkWebView = WKWebView.init(frame: self.bounds)
+        let webViewConfiguration = WKWebViewConfiguration.init()
+        //webViewConfiguration.suppressesIncrementalRendering = true
+        //webViewConfiguration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
+        let wkWebView = WKWebView.init(frame: self.bounds, configuration: webViewConfiguration)
         wkWebView.navigationDelegate = self
+        self.wkWebView = wkWebView
         updateURL()
     }
     
     override func stopAnimation() {
         super.stopAnimation()
-        wkWebView.stopLoading()
-        wkWebView.removeFromSuperview()
-        wkWebView.navigationDelegate = nil
-        wkWebView = nil
+        if let wkWebView = self.wkWebView {
+            wkWebView.stopLoading()
+            wkWebView.removeFromSuperview()
+            wkWebView.navigationDelegate = nil
+            self.wkWebView = nil
+        }
     }
     
     func updateURL() {
-        wkWebView.stopLoading()
-        
-        let urlString = "https://rezmason.github.io/matrix"
-        
-        let url = URL(string: urlString)!
-        if (url.scheme == "http" || url.scheme == "https") {
-            wkWebView.load(URLRequest(url: url))
+        if let wkWebView = self.wkWebView {
+            wkWebView.stopLoading()
+            
+            let urlString = configWindowController.webAddress
+            
+            let url = URL(string: urlString)!
+            if (url.scheme == "http" || url.scheme == "https") {
+                wkWebView.load(URLRequest(url: url))
+            }
         }
     }
     
